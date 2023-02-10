@@ -2,15 +2,15 @@
 
 
 
-# 1. Why do you use feature selection?
-			# Filter Methods
-			# Embedded Methods
-			# Misleading
-			#	Overfitting
-# 2. Explain what regularization is and why it is useful.
-# 3. What’s the difference between L1 and L2 regularization?
-# 4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
-# 5. Explain what precision and recall are. How do they relate to the ROC curve?
+ 1. Why do you use feature selection?
+		Filter Methods
+		Embedded Methods
+		Misleading
+		Overfitting
+2. Explain what regularization is and why it is useful.
+3. What’s the difference between L1 and L2 regularization?
+4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
+5. Explain what precision and recall are. How do they relate to the ROC curve?
 6. Is it better to have too many false positives, or too many false negatives?
 7. How do you deal with unbalanced binary classification?
 8. What is statistical power?
@@ -47,7 +47,7 @@ Penalized Gradient Boosting
 
 
 
-1. Why do you use feature selection?
+## 1. Why do you use feature selection?
 Feature selection is the process of selecting a subset of relevant features for use in model construction. Feature selection is itself useful, but it mostly acts as a filter, muting out features that aren’t useful in addition to your existing features. Feature selection methods aid you in your mission to create an accurate predictive model. They help you by choosing features that will give you as good or better accuracy whilst requiring less data. Feature selection methods can be used to identify and remove unneeded, irrelevant and redundant attributes from data that do not contribute to the accuracy of a predictive model or may in fact decrease the accuracy of the model. Fewer attributes is desirable because it reduces the complexity of the model, and a simpler model is simpler to understand and explain.
 
 Filter Methods
@@ -62,19 +62,19 @@ Including redundant attributes can be misleading to modeling algorithms. Instanc
 Overfitting
 Keeping irrelevant attributes in your dataset can result in overfitting. Decision tree algorithms like C4.5 seek to make optimal spits in attribute values. Those attributes that are more correlated with the prediction are split on first. Deeper in the tree less relevant and irrelevant attributes are used to make prediction decisions that may only be beneficial by chance in the training dataset. This overfitting of the training data can negatively affect the modeling power of the method and cripple the predictive accuracy.
 
-2. Explain what regularization is and why it is useful.
+## 2. Explain what regularization is and why it is useful.
 Regularization is the process of adding a tuning parameter to a model to induce smoothness in order to prevent overfitting.
 
 This is most often done by adding a constant multiple to an existing weight vector. This constant is often either the L1 (Lasso) or L2 (ridge), but can in actuality can be any norm. The model predictions should then minimize the mean of the loss function calculated on the regularized training set.
 
 It is well known, as explained by others, that L1 regularization helps perform feature selection in sparse feature spaces, and that is a good practical reason to use L1 in some situations. However, beyond that particular reason I have never seen L1 to perform better than L2 in practice. If you take a look at LIBLINEAR FAQ on this issue you will see how they have not seen a practical example where L1 beats L2 and encourage users of the library to contact them if they find one. Even in a situation where you might benefit from L1's sparsity in order to do feature selection, using L2 on the remaining variables is likely to give better results than L1 by itself.
 
-3. What’s the difference between L1 and L2 regularization?
+## 3. What’s the difference between L1 and L2 regularization?
 Regularization is a very important technique in machine learning to prevent overfitting. Mathematically speaking, it adds a regularization term in order to prevent the coefficients to fit so perfectly to overfit. The difference between the L1(Lasso) and L2(Ridge) is just that L2(Ridge) is the sum of the square of the weights, while L1(Lasso) is just the sum of the absolute weights in MSE or another loss function. As follows: alt text The difference between their properties can be promptly summarized as follows: alt text
 
 Solution uniqueness is a simpler case but requires a bit of imagination. First, this picture below: alt text
 
-4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
+## 4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
 Proposed methods for model validation:
 
 If the values predicted by the model are far outside of the response variable range, this would immediately indicate poor estimation or model inaccuracy.
@@ -82,7 +82,7 @@ If the values seem to be reasonable, examine the parameters; any of the followin
 Use the model for prediction by feeding it new data, and use the coefficient of determination (R squared) as a model validity measure.
 Use data splitting to form a separate dataset for estimating model parameters, and another for validating predictions.
 Use jackknife resampling if the dataset contains a small number of instances, and measure validity with R squared and mean squared error (MSE).
-5. Explain what precision and recall are. How do they relate to the ROC curve?
+## 5. Explain what precision and recall are. How do they relate to the ROC curve?
 Calculating precision and recall is actually quite easy. Imagine there are 100 positive cases among 10,000 cases. You want to predict which ones are positive, and you pick 200 to have a better chance of catching many of the 100 positive cases. You record the IDs of your predictions, and when you get the actual results you sum up how many times you were right or wrong. There are four ways of being right or wrong:
 
 TN / True Negative: case was negative and predicted negative
@@ -108,14 +108,14 @@ Sensitivity also known as the True Positive rate or Recall is calculated as, Sen
 Specificity, also known as True Negative Rate is calculated as, Specificity = TN / (TN + FP). Since the formula does not contain FN and TP, Specificity may give you a biased result, especially for imbalanced classes. In the example of Fraud detection, it gives you the percentage of Correctly Predicted Non-Frauds from the pool of Actual Frauds pool of Actual Non-Frauds
 Assessing and Comparing Classifier Performance with ROC Curves
 
-6. Is it better to have too many false positives, or too many false negatives?
+## 6. Is it better to have too many false positives, or too many false negatives?
 It depends on the question as well as on the domain for which we are trying to solve the question.
 
 In medical testing, false negatives may provide a falsely reassuring message to patients and physicians that disease is absent, when it is actually present. This sometimes leads to inappropriate or inadequate treatment of both the patient and their disease. So, it is desired to have too many false positive.
 
 For spam filtering, a false positive occurs when spam filtering or spam blocking techniques wrongly classify a legitimate email message as spam and, as a result, interferes with its delivery. While most anti-spam tactics can block or filter a high percentage of unwanted emails, doing so without creating significant false-positive results is a much more demanding task. So, we prefer too many false negatives over many false positives.
 
-7. How do you deal with unbalanced binary classification?
+## 7. How do you deal with unbalanced binary classification?
 Imbalanced data typically refers to a problem with classification problems where the classes are not represented equally. For example, you may have a 2-class (binary) classification problem with 100 instances (rows). A total of 80 instances are labeled with Class-1 and the remaining 20 instances are labeled with Class-2.
 
 This is an imbalanced dataset and the ratio of Class-1 to Class-2 instances is 80:20 or more concisely 4:1. You can have a class imbalance problem on two-class classification problems as well as multi-class classification problems. Most techniques can be used on either. The remaining discussions will assume a two-class classification problem because it is easier to think about and describe.
@@ -137,7 +137,8 @@ Try Penalized Models
 You can use the same algorithms but give them a different perspective on the problem. Penalized classification imposes an additional cost on the model for making classification mistakes on the minority class during training. These penalties can bias the model to pay more attention to the minority class. Often the handling of class penalties or weights are specialized to the learning algorithm. There are penalized versions of algorithms such as penalized-SVM and penalized-LDA. Using penalization is desirable if you are locked into a specific algorithm and are unable to resample or you’re getting poor results. It provides yet another way to “balance” the classes. Setting up the penalty matrix can be complex. You will very likely have to try a variety of penalty schemes and see what works best for your problem.
 Try a Different Perspective
 Taking a look and thinking about your problem from these perspectives can sometimes shame loose some ideas. Two you might like to consider are anomaly detection and change detection.
-8. What is statistical power?
+
+## 8. What is statistical power?
 Statistical power or sensitivity of a binary hypothesis test is the probability that the test correctly rejects the null hypothesis (H0) when the alternative hypothesis (H1) is true.
 
 It can be equivalently thought of as the probability of accepting the alternative hypothesis (H1) when it is true—that is, the ability of a test to detect an effect, if the effect actually exists.
@@ -148,7 +149,7 @@ A type I error (or error of the first kind) is the incorrect rejection of a true
 
 A type II error (or error of the second kind) is the failure to reject a false null hypothesis. Examples of type II errors would be a blood test failing to detect the disease it was designed to detect, in a patient who really has the disease; a fire breaking out and the fire alarm does not ring; or a clinical trial of a medical treatment failing to show that the treatment works when really it does. alt text
 
-9. What are bias and variance, and what are their relation to modeling data?
+## 9. What are bias and variance, and what are their relation to modeling data?
 Bias is how far removed a model's predictions are from correctness, while variance is the degree to which these predictions vary between model iterations.
 
 Bias is generally the distance between the model that you build on the training data (the best model that your model space can provide) and the “real model” (which generates data).
@@ -204,7 +205,7 @@ One way of resolving the trade-off is to use mixture models and ensemble learnin
 
 Understanding the Bias-Variance Tradeoff
 
-10. What if the classes are imbalanced? What if there are more than 2 groups?
+## 10. What if the classes are imbalanced? What if there are more than 2 groups?
 Binary classification involves classifying the data into two groups, e.g. whether or not a customer buys a particular product or not (Yes/No), based on independent variables such as gender, age, location etc.
 
 As the target variable is not continuous, binary classification model predicts the probability of a target variable to be Yes/No. To evaluate such a model, a metric called the confusion matrix is used, also called the classification or co-incidence matrix. With the help of a confusion matrix, we can calculate important performance measures:
@@ -218,7 +219,8 @@ F-measure = 2 / ((1 / Precision) + (1 / Recall)) = 2 * (precision * recall) / (p
 ROC (Receiver Operating Characteristics) = plot of FPR vs TPR
 AUC (Area Under the [ROC] Curve)
 Performance measure across all classification thresholds. Treated as the probability that a model ranks a randomly chosen positive sample higher than negative
-11. What are some ways I can make my model more robust to outliers?
+
+## 11. What are some ways I can make my model more robust to outliers?
 There are several ways to make a model more robust to outliers, from different points of view (data preparation or model building). An outlier in the question and answer is assumed being unwanted, unexpected, or a must-be-wrong value to the human’s knowledge so far (e.g. no one is 200 years old) rather than a rare event which is possible but rare.
 
 Outliers are usually defined in relation to the distribution. Thus outliers could be removed in the pre-processing step (before any learning step), by using standard deviations (Mean +/- 2*SD), it can be used for normality. Or interquartile ranges Q1 - Q3, Q1 - is the "middle" value in the first half of the rank-ordered data set, Q3 - is the "middle" value in the second half of the rank-ordered data set. It can be used for not normal/unknown as threshold levels.
@@ -227,17 +229,17 @@ Moreover, data transformation (e.g. log transformation) may help if data have a 
 
 For model building, some models are resistant to outliers (e.g. tree-based approaches) or non-parametric tests. Similar to the median effect, tree models divide each node into two in each split. Thus, at each split, all data points in a bucket could be equally treated regardless of extreme values they may have.
 
-12. In unsupervised learning, if a ground truth about a dataset is unknown, how can we determine the most useful number of clusters to be?
+## 12. In unsupervised learning, if a ground truth about a dataset is unknown, how can we determine the most useful number of clusters to be?
 The elbow method is often the best place to start, and is especially useful due to its ease of explanation and verification via visualization. The elbow method is interested in explaining variance as a function of cluster numbers (the k in k-means). By plotting the percentage of variance explained against k, the first N clusters should add significant information, explaining variance; yet, some eventual value of k will result in a much less significant gain in information, and it is at this point that the graph will provide a noticeable angle. This angle will be the optimal number of clusters, from the perspective of the elbow method, It should be self-evident that, in order to plot this variance against varying numbers of clusters, varying numbers of clusters must be tested. Successive complete iterations of the clustering method must be undertaken, after which the results can be plotted and compared. DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density.
 
-13. Define variance
+## 13. Define variance
 Variance is the expectation of the squared deviation of a random variable from its mean. Informally, it measures how far a set of (random) numbers are spread out from their average value. The variance is the square of the standard deviation, the second central moment of a distribution, and the covariance of the random variable with itself.
 
 Var(X) = E[(X - m)^2], m=E[X]
 
 Variance is, thus, a measure of the scatter of the values of a random variable relative to its mathematical expectation.
 
-14. Expected value
+## 14. Expected value
 Expected value — Expected Value (Probability Distribution In a probability distribution, expected value is the value that a random variable takes with greatest likelihood.
 
 Based on the law of distribution of a random variable x, we know that a random variable x can take values x1, x2, ..., xk with probabilities p1, p2, ..., pk. The mathematical expectation M(x) of a random variable x is equal. The mathematical expectation of a random variable X (denoted by M (X) or less often E (X)) characterizes the average value of a random variable (discrete or continuous). Mathematical expectation is the first initial moment of a given CB.
@@ -250,14 +252,15 @@ import numpy as np
 X = [3,4,5,6,7]
 P = [0.1,0.2,0.3,0.4,0.5]
 np.sum(np.dot(X, P))
-15. Describe the differences between and use cases for box plots and histograms
+
+## 15. Describe the differences between and use cases for box plots and histograms
 A histogram is a type of bar chart that graphically displays the frequencies of a data set. Similar to a bar chart, a histogram plots the frequency, or raw count, on the Y-axis (vertical) and the variable being measured on the X-axis (horizontal).
 
 The only difference between a histogram and a bar chart is that a histogram displays frequencies for a group of data, rather than an individual data point; therefore, no spaces are present between the bars. Typically, a histogram groups data into small chunks (four to eight values per bar on the horizontal axis), unless the range of data is so great that it easier to identify general distribution trends with larger groupings.
 
 A box plot, also called a box-and-whisker plot, is a chart that graphically represents the five most important descriptive values for a data set. These values include the minimum value, the first quartile, the median, the third quartile, and the maximum value. When graphing this five-number summary, only the horizontal axis displays values. Within the quadrant, a vertical line is placed above each of the summary numbers. A box is drawn around the middle three lines (first quartile, median, and third quartile) and two lines are drawn from the box’s edges to the two endpoints (minimum and maximum). Boxplots are better for comparing distributions than histograms! alt text
 
-16. How would you find an anomaly in a distribution?
+## 16. How would you find an anomaly in a distribution?
 Before getting started, it is important to establish some boundaries on the definition of an anomaly. Anomalies can be broadly categorized as:
 
 Point anomalies: A single instance of data is anomalous if it's too far off from the rest. Business use case: Detecting credit card fraud based on "amount spent."
@@ -275,25 +278,26 @@ The most common form of clustering-based anomaly detection is done with prototyp
 
 Using this approach to anomaly detection, a point is classified as an anomaly if its omission from the group significantly improves the prototype, then the point is classified as an anomaly. This logically makes sense. K-means is a clustering algorithm that clusters similar points. The points in any cluster are similar to the centroid of that cluster, hence why they are members of that cluster. If one point in the cluster is so far from the centroid that it pulls the centroid away from it's natural center, than that point is literally an outlier, since it lies outside the natural bounds for the cluster. Hence, its omission is a logical step to improve the accuracy of the rest of the cluster. Using this approach, the outlier score is defined as the degree to which a point doesn't belong to any cluster, or the distance it is from the centroid of the cluster. In K-means, the degree to which the removal of a point would increase the accuracy of the centroid is the difference in the SSE, or standard squared error, or the cluster with and without the point. If there is a substantial improvement in SSE after the removal of the point, that correlates to a high outlier score for that point. More specifically, when using a k-means clustering approach towards anomaly detection, the outlier score is calculated in one of two ways. The simplest is the point's distance from its closest centroid. However, this approach is not as useful when there are clusters of differing densities. To tackle that problem, the point's relative distance to it's closest centroid is used, where relative distance is defined as the ratio of the point's distance from the centroid to the median distance of all points in the cluster from the centroid. This approach to anomaly detection is sensitive to the value of k. Also, if the data is highly noisy, then that will throw off the accuracy of the initial clusters, which will decrease the accuracy of this type of anomaly detection. The time complexity of this approach is obviously dependent on the choice of clustering algorithm, but since most clustering algorithms have linear or close to linear time and space complexity, this type of anomaly detection can be highly efficient.
 
-17. How do you deal with outliers in your data?
+## 17. How do you deal with outliers in your data?
 For the most part, if your data is affected by these extreme cases, you can bound the input to a historical representative of your data that excludes outliers. So that could be a number of items (>3) or a lower or upper bounds on your order value.
 
 If the outliers are from a data set that is relatively unique then analyze them for your specific situation. Analyze both with and without them, and perhaps with a replacement alternative, if you have a reason for one, and report your results of this assessment. One option is to try a transformation. Square root and log transformations both pull in high numbers. This can make assumptions work better if the outlier is a dependent.
 
-18. How do you deal with sparse data?
+## 18. How do you deal with sparse data?
 We could take a look at L1 regularization since it best fits to the sparse data and do feature selection. If linear relationship - linear regression either - svm.
 
 Also it would be nice to use one-hot-encoding or bag-of-words. A one hot encoding is a representation of categorical variables as binary vectors. This first requires that the categorical values be mapped to integer values. Then, each integer value is represented as a binary vector that is all zero values except the index of the integer, which is marked with a 1.
 
-19. Big Data Engineer Can you explain what REST is?
+## 19. Big Data Engineer Can you explain what REST is?
 REST stands for Representational State Transfer. (It is sometimes spelled "ReST".) It relies on a stateless, client-server, cacheable communications protocol -- and in virtually all cases, the HTTP protocol is used. REST is an architecture style for designing networked applications. The idea is simple HTTP is used to make calls between machines.
 
 In many ways, the World Wide Web itself, based on HTTP, can be viewed as a REST-based architecture. RESTful applications use HTTP requests to post data (create and/or update), read data (e.g., make queries), and delete data. Thus, REST uses HTTP for all four CRUD (Create/Read/Update/Delete) operations. REST is a lightweight alternative to mechanisms like RPC (Remote Procedure Calls) and Web Services (SOAP, WSDL, et al.). Later, we will see how much more simple REST is.
 Despite being simple, REST is fully-featured; there's basically nothing you can do in Web Services that can't be done with a RESTful architecture. REST is not a "standard". There will never be a W3C recommendation for REST, for example. And while there are REST programming frameworks, working with REST is so simple that you can often "roll your own" with standard library features in languages like Perl, Java, or C#.
-20. Logistic regression
+
+## 20. Logistic regression
 Log odds - raw output from the model; odds - exponent from the output of the model. Probability of the output - odds / (1+odds).
 
-21. What is the effect on the coefficients of logistic regression if two predictors are highly correlated? What are the confidence intervals of the coefficients?
+## 21. What is the effect on the coefficients of logistic regression if two predictors are highly correlated? What are the confidence intervals of the coefficients?
 When predictor variables are correlated, the estimated regression coefficient of any one variable depends on which other predictor variables are included in the model. When predictor variables are correlated, the precision of the estimated regression coefficients decreases as more predictor variables are added to the model.
 
 In statistics, multicollinearity (also collinearity) is a phenomenon in which two or more predictor variables in a multiple regression model are highly correlated, meaning that one can be linearly predicted from the others with a substantial degree of accuracy. In this situation the coefficient estimates of the multiple regression may change erratically in response to small changes in the model or the data. Multicollinearity does not reduce the predictive power or reliability of the model as a whole, at least within the sample data set; it only affects calculations regarding individual predictors. That is, a multiple regression model with correlated predictors can indicate how well the entire bundle of predictors predicts the outcome variable, but it may not give valid results about any individual predictor, or about which predictors are redundant with respect to others.
@@ -322,7 +326,7 @@ Factors affecting the width of the confidence interval include the size of the s
 
 X  ±  Z*s/√(n), X is the mean, Z is the chosen Z-value from the table, s is the standard deviation, n is the number of samples. The value after the ± is called the margin of error.
 
-22. What’s the difference between Gaussian Mixture Model and K-Means?
+## 22. What’s the difference between Gaussian Mixture Model and K-Means?
 Let's says we are aiming to break them into three clusters. K-means will start with the assumption that a given data point belongs to one cluster.
 
 Choose a data point. At a given point in the algorithm, we are certain that a point belongs to a red cluster. In the next iteration, we might revise that belief, and be certain that it belongs to the green cluster. However, remember, in each iteration, we are absolutely certain as to which cluster the point belongs to. This is the "hard assignment".
@@ -343,7 +347,8 @@ EM:
 
 Soft assigns a point to clusters (so it give a probability of any point belonging to any centroid).
 It doesn't depend on the L2 norm, but is based on the Expectation, i.e., the probability of the point belonging to a particular cluster. This makes K-means biased towards spherical clusters.
-23. Describe how Gradient Boosting works.
+
+## 23. Describe how Gradient Boosting works.
 The idea of boosting came out of the idea of whether a weak learner can be modified to become better.
 
 Gradient boosting relies on regression trees (even when solving a classification problem) which minimize MSE. Selecting a prediction for a leaf region is simple: to minimize MSE we should select an average target value over samples in the leaf. The tree is built greedily starting from the root: for each leaf a split is selected to minimize MSE for this step.
@@ -448,11 +453,8 @@ L1 regularization of weights.
 L2 regularization of weights.
 The additional regularization term helps to smooth the final learnt weights to avoid over-fitting. Intuitively, the regularized objective will tend to select a model employing simple and predictive functions.
 
-More details in 2 posts (russian):
 
-https://habr.com/company/ods/blog/327250/
-https://alexanderdyakonov.files.wordpress.com/2017/06/book_boosting_pdf.pdf
-24. Difference between AdaBoost and XGBoost.
+## 24. Difference between AdaBoost and XGBoost.
 Both methods combine weak learners into one strong learner. For example, one decision tree is a weak learner, and an emsemble of them would be a random forest model, which is a strong learner.
 
 Both methods in the learning process will increase the ensemble of weak-trainers, adding new weak learners to the ensemble at each training iteration, i.e. in the case of the forest, the forest will grow with new trees. The only difference between AdaBoost and XGBoost is how the ensemble is replenished.
@@ -463,7 +465,7 @@ XGBoost does not change the selection or the distribution of observations at all
 
 In short, AdaBoost- reweighting examples. Gradient boosting - predicting the loss function of trees. Xgboost - the regularization term was added to the loss function (depth + values ​​in leaves).
 
-25. Data Mining Describe the decision tree model
+## 25. Data Mining Describe the decision tree model
 A decision tree is a structure that includes a root node, branches, and leaf nodes. Each internal node denotes a test on an attribute, each branch denotes the outcome of a test, and each leaf node holds a class label. The topmost node in the tree is the root node.
 
 Each internal node represents a test on an attribute. Each leaf node represents a class. The benefits of having a decision tree are as follows:
