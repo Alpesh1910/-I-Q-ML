@@ -1,16 +1,16 @@
 # -I-Q-ML
 
-Source
 
-1. Why do you use feature selection?
-Filter Methods
-Embedded Methods
-Misleading
-Overfitting
-2. Explain what regularization is and why it is useful.
-3. What’s the difference between L1 and L2 regularization?
-4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
-5. Explain what precision and recall are. How do they relate to the ROC curve?
+
+# 1. Why do you use feature selection?
+			# Filter Methods
+			# Embedded Methods
+			# Misleading
+			#	Overfitting
+# 2. Explain what regularization is and why it is useful.
+# 3. What’s the difference between L1 and L2 regularization?
+# 4. How would you validate a model you created to generate a predictive model of a quantitative outcome variable using multiple regression?
+# 5. Explain what precision and recall are. How do they relate to the ROC curve?
 6. Is it better to have too many false positives, or too many false negatives?
 7. How do you deal with unbalanced binary classification?
 8. What is statistical power?
